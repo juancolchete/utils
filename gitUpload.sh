@@ -1,7 +1,8 @@
 git config --global --add safe.directory $3
 LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
 LAST_COMMIT_HASH=$(echo -n $LAST_COMMIT_MSG | sha256sum | base64)
-COMMIT_MESSAGE="bot: $LAST_COMMIT_HASH"
+HASH_MAX_SIZE=20
+COMMIT_MESSAGE="bot: ${LAST_COMMIT_HASH:0:$HASH_MAX_SIZE}"
 if [[ `git status --porcelain` ]]; then
   git config --global user.name "$1"
   git config --global user.email "$2"
