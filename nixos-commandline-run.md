@@ -1,4 +1,4 @@
 ### Antigravity
 ```bash
-nix --extra-experimental-features "nix-command flakes" run nixpkgs#antigravity-fhs
+NIXPKGS_ALLOW_UNFREE=1 nix --extra-experimental-features "nix-command flakes" run --impure nixpkgs#antigravity-fhs
 ```
